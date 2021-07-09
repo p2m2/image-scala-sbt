@@ -9,7 +9,7 @@ RUN curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E4
 RUN apt-get update && apt-get install -y sbt
 
 WORKDIR /workdir
-RUN sbt version
+RUN sbt --verbose --version
 WORKDIR /
 
 
