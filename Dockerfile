@@ -12,5 +12,4 @@ WORKDIR /workdir
 RUN sbt --verbose --version
 WORKDIR /
 
-
-
+CMD ["sbt"]
