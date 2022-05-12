@@ -2,5 +2,5 @@
 Docker image scala-sbt
 
 ```Dockerfile
-FROM inraep2m2/image-scala-sbt:latest
+FROM inraep2m2/scala-sbt:latest
 ```
