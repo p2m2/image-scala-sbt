@@ -1,4 +1,4 @@
-FROM adoptopenjdk:latest
+FROM adoptopenjdk:11.0.11_9-jdk-openj9-0.26.0-focal
 
 RUN apt-get update && apt-get install -y gnupg
 
