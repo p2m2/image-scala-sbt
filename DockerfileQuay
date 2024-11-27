@@ -1,0 +1,21 @@
+# © 2024 INRAE
+# SPDX-FileContributor: Marcellino Palerme <marcellino.palerme@inrae.fr>
+#
+# SPDX-License-Identifier: MIT
+
+FROM quay.io/fedora/fedora-minimal
+
+RUN dnf upgrade -y
+RUN dnf install curl -y
+RUN dnf install unzip -y
+# install java 11
+RUN dnf install -y java-11-openjdk-devel
+
+##### Install sbt #####
+# download sbt
+RUN curl -L https://github.com/sbt/sbt/releases/download/v1.7.1/sbt-1.7.1.zip>sbt.zip
+# unzip sbt
+RUN unzip sbt.zip
+# link sbt to /usr/bin
+RUN ln -s -t /usr/bin /sbt/bin/sbt
+CMD ["sbt","--script-version"]
