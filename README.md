@@ -7,5 +7,5 @@ FROM inraep2m2/scala-sbt:latest
 
 From Github registry
 ```Dockerfile
-FROM ghcr.io/<team_user>/scala-sbt/scala-sbt:latest
+FROM ghcr.io/marcellino-palerme/scala-sbt:latest
 ```
