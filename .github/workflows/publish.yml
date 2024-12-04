@@ -30,11 +30,21 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.MY_TOKEN }}
-
-    - name: Build Docker image
+    - name: set lower case owner name
+      id: set_owner_lc
       run: |
-        docker build -f DockerfileQuay -t ghcr.io/${{ github.repository }}:latest -t ghcr.io/${{ github.repository }}:1.7.1 .
+        echo "OWNER_LC=${OWNER,,}" >> "$GITHUB_OUTPUT"
+      env:
+        OWNER: '${{ github.repository_owner }}'
+        
+    - name: Build Docker image
+      env:
+        OWNER: ${{ steps.set_owner_lc.outputs.OWNER_LC }}
+      run: |
+        docker build -f DockerfileQuay -t ghcr.io/${{ env.OWNER }}:latest -t ghcr.io/${{ env.OWNER }}:1.7.1 .
 
     - name: Push Docker image
+      env:
+        OWNER: ${{ steps.set_owner_lc.outputs.OWNER_LC }}
       run: |
-        docker push -a ghcr.io/${{ github.repository }}
+        docker push -a ghcr.io/${{ env.OWNER }}
